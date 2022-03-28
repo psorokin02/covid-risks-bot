@@ -7,9 +7,10 @@ import ru.spbstu.user.User
 import ru.spbstu.user.UserBotState
 
 @Component
-class StartHandler: StateHandler() {
+class OutputResultHandler: StateHandler() {
     override val state: UserBotState
-        get() = UserBotState.START
+        get() = UserBotState.OUTPUT_RESULT
+
     override fun getOutput(message: Message, user: User): String {
         TODO("Not yet implemented")
     }

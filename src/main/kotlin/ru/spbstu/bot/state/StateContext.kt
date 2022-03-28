@@ -1,4 +1,16 @@
 package ru.spbstu.bot.state
 
-class StateContext {
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
+import org.telegram.telegrambots.meta.api.methods.BotApiMethod
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage
+import org.telegram.telegrambots.meta.api.objects.Message
+import ru.spbstu.user.User
+import ru.spbstu.user.UserBotState
+
+@Component
+class StateContext(@Autowired val stateHandlersMap: Map<UserBotState, StateHandler>) {
+    fun handleMessage(message: Message, user: User): BotApiMethod<*>? {
+        return stateHandlersMap[user.state]?.handleMessage(message, user)
+    }
 }
