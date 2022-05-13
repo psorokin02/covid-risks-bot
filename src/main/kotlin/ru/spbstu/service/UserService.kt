@@ -8,26 +8,20 @@ import ru.spbstu.user.User
 import ru.spbstu.user.UserAnswers
 
 @Service
-class UserService(@Autowired val userRepo: UserDataRepo) {
-
-    fun getUserById(id: Long): User? {
-        return userRepo.getUserById(id)
+class UserService(
+    private val userRepo: UserDataRepo
+){
+    fun getUser(id: Long): User {
+        return userRepo.getUser(id)
     }
-
-    fun getUserState(id: Long): UserBotState? {
+    fun getUserState(id: Long): UserBotState{
         return userRepo.getUserState(id)
     }
-
-    fun setUserState(id: Long, state: UserBotState) {
-        return userRepo.setUserState(id, state)
+    fun save(id: Long): User{
+        return userRepo.save(id)
     }
 
-    fun updateUserAnswers(id: Long, answers: UserAnswers) {
-        userRepo.updateUserAnswers(id, answers)
+    fun isUserExist(id: Long): Boolean{
+        return userRepo.isUserExist(id)
     }
-
-    fun saveUser(id: Long): User {
-        return userRepo.saveUser(id)
-    }
-
 }

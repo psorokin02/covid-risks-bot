@@ -7,14 +7,13 @@ import org.telegram.telegrambots.meta.api.methods.BotApiMethod
 import org.telegram.telegrambots.meta.api.objects.Update
 
 class CovidBot(
+    private val botFacade: CovidBotFacade,
     @Value("\${bot.token}")
     val token: String,
     @Value("\${bot.webHook}")
     val webHookPath: String,
     @Value("\${bot.name}")
-    val name: String,
-    @Autowired
-    val botFacade: CovidBotFacade
+    val name: String
 ): TelegramWebhookBot() {
 
     override fun getBotToken(): String {

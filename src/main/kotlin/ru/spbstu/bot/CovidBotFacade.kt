@@ -11,21 +11,20 @@ import ru.spbstu.user.User
 
 @Component
 class CovidBotFacade(
-    @Autowired
     val stateContext: StateContext,
-    @Autowired
     val userService: UserService
 ) {
     fun onWebhookUpdateReceived(update: Update?): BotApiMethod<*>? {
         if (update != null && update.hasMessage()) {
-            var user = userService.getUserById(update.message.chatId)
-            if(user == null) user = userService.saveUser(update.message.chatId)
-            return handleMessage(update.message, user)
+            return handleMessage(update.message)
         }
         return null
     }
 
-    private fun handleMessage(message: Message, user: User): BotApiMethod<*>? {
+    private fun handleMessage(message: Message): BotApiMethod<*>? {
+        val id = message.chatId
+        if(!userService.isUserExist(id)) userService.save(id)
+        val user = userService.getUser(id)
         return stateContext.handleMessage(message, user)
     }
 }

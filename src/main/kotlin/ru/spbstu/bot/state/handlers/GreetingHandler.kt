@@ -4,14 +4,13 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.objects.Message
 import ru.spbstu.bot.state.StateHandler
 import ru.spbstu.user.User
+import ru.spbstu.user.UserAnswers
 import ru.spbstu.user.UserBotState
 
 @Component
 class GreetingHandler : StateHandler() {
-    override val state: UserBotState
-        get() = UserBotState.GREETING
-
-    override fun getOutput(message: Message, user: User): String {
-        TODO("Not yet implemented")
+    override val state = UserBotState.GREETING
+    override fun handleMessage(message: String, userAnswers: UserAnswers): Pair<String, UserBotState> {
+        return "Hello, print \'go\' to start" to UserBotState.START
     }
 }

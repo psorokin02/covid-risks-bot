@@ -4,14 +4,16 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.objects.Message
 import ru.spbstu.bot.state.StateHandler
 import ru.spbstu.user.User
+import ru.spbstu.user.UserAnswers
 import ru.spbstu.user.UserBotState
 
 @Component
 class OutputResultHandler: StateHandler() {
     override val state: UserBotState
-        get() = UserBotState.OUTPUT_RESULT
+        get() = TODO("Not yet implemented")
 
-    override fun getOutput(message: Message, user: User): String {
+    override fun handleMessage(message: String, userAnswers: UserAnswers): Pair<String, UserBotState> {
         TODO("Not yet implemented")
     }
+
 }
