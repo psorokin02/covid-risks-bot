@@ -7,3 +7,11 @@ fun String.isInt(): Boolean =
     }catch (e: Exception){
         false
     }
+
+fun String.isDouble(): Boolean =
+    try {
+        this.toDouble()
+        true
+    }catch (e: Exception){
+        false
+    }

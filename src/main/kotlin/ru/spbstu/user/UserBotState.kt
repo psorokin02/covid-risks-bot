@@ -26,17 +26,8 @@ enum class UserBotState() {
     },
 
     GENDER{
-        override val next get() = WAS_ILL
-        override val prev get() = AGE
-        override val message = "Болели ли вы короновирусом и как сильно?\n" +
-                "Отправьте цифру от 0 до 10, где: \n" +
-                "0 - не болел\n" +
-                "10 - болел очень серьезно"
-    },
-
-    WAS_ILL{
         override val next get() = WAS_VACCINE
-        override val prev get() = GENDER
+        override val prev get() = AGE
         override val message = "Вакцинировались ли вы?\n" +
                 "Отправьте цифру от 1 до 6, где: \n" +
                 "1. Больше года назад\n" +
@@ -47,9 +38,22 @@ enum class UserBotState() {
                 "6. Не вакцинировался\n"
     },
 
+//    WAS_ILL{
+//        override val next get() = WAS_VACCINE
+//        override val prev get() = GENDER
+//        override val message = "Вакцинировались ли вы?\n" +
+//                "Отправьте цифру от 1 до 6, где: \n" +
+//                "1. Больше года назад\n" +
+//                "2. Больше 6 месяцев назад\n" +
+//                "3. Больше 3 месяцев назад\n" +
+//                "4. Больше 1 месяца назад\n" +
+//                "5. Меньше одного месяца назад\n" +
+//                "6. Не вакцинировался\n"
+//    },
+
     WAS_VACCINE{
         override val next get() = PLACES_FREQUENCY
-        override val prev get() = WAS_ILL
+        override val prev get() = GENDER
         override val message = "Как часто вы посещаете места скопления большого количества людей?\n" +
                 "Отправьте цифру от 1 до 10, где: \n" +
                 "1 - почти не выхожу из дома\n" +

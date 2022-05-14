@@ -3,7 +3,6 @@ package ru.spbstu.user
 class UserAnswers {
     var age: Int? = null
     var gender: Int? = null
-    var wasIll: Int? = null
     var wasVaccine: Int? = null
     var placesFrequency: Int? = null
     var mask: Int? = null
@@ -12,7 +11,6 @@ class UserAnswers {
         return "UserAnswers(" +
                 "\nage=$age, " +
                 "\ngender=$gender, " +
-                "\nwasIll=$wasIll, " +
                 "\nwasVaccine=$wasVaccine, " +
                 "\nplacesFrequency=$placesFrequency, " +
                 "\nmask=$mask, " +
