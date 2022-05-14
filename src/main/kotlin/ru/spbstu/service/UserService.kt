@@ -2,12 +2,13 @@ package ru.spbstu.service
 
 import org.jvnet.hk2.annotations.Service
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 import ru.spbstu.repo.UserDataRepo
 import ru.spbstu.user.UserBotState
 import ru.spbstu.user.User
 import ru.spbstu.user.UserAnswers
 
-@Service
+@Component("user_service")
 class UserService(
     private val userRepo: UserDataRepo
 ){

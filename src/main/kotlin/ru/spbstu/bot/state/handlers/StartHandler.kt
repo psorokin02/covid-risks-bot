@@ -11,10 +11,8 @@ import ru.spbstu.user.UserBotState.*
 @Component
 class StartHandler: StateHandler() {
     override val state = START
-    override fun handleMessage(message: String, userAnswers: UserAnswers): Pair<String, UserBotState> {
-        if(message != "go") return "print \'go\' to start" to START
-        return "Тебе необходимо заполнить анкету из нескольких вопросов\n\n" +
-                "Сколько тебе лет (число от 1 до 100)" to AGE
-    }
 
+    override fun validateAndSaveMessage(message: String, userAnswers: UserAnswers): Boolean {
+        return message == "go"
+    }
 }

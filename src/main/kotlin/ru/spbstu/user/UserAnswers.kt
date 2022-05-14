@@ -8,4 +8,15 @@ class UserAnswers {
     var placesFrequency: Int? = null
     var mask: Int? = null
     var population: Int? = null
+    override fun toString(): String {
+        return "UserAnswers(" +
+                "\nage=$age, " +
+                "\ngender=$gender, " +
+                "\nwasIll=$wasIll, " +
+                "\nwasVaccine=$wasVaccine, " +
+                "\nplacesFrequency=$placesFrequency, " +
+                "\nmask=$mask, " +
+                "\npopulation=$population" +
+                "\n)"
+    }
 }

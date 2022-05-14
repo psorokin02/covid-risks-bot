@@ -12,10 +12,26 @@ abstract class StateHandler {
 
     abstract val state: UserBotState
     fun handleMessage(message: Message, user: User): BotApiMethod<*>{
+        if(message.text == null){
+            return SendMessage(user.id.toString(), "Введите текст")
+        }
         val output = handleMessage(message.text, user.answers)
         user.state = output.second
         return SendMessage(user.id.toString(), output.first)
     }
 
-    protected abstract fun handleMessage(message: String, userAnswers: UserAnswers): Pair<String, UserBotState>
+    protected open fun handleMessage(
+        message: String,
+        userAnswers: UserAnswers
+    ): Pair<String, UserBotState>{
+        if(
+            validateAndSaveMessage(message, userAnswers)
+        ) return state.ask()
+        return state.wrongAnswer()
+    }
+
+    protected open fun validateAndSaveMessage(
+        message: String,
+        userAnswers: UserAnswers
+    ): Boolean = true
 }

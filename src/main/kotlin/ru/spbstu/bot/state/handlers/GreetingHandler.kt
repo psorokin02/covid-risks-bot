@@ -8,9 +8,6 @@ import ru.spbstu.user.UserAnswers
 import ru.spbstu.user.UserBotState
 
 @Component
-class GreetingHandler : StateHandler() {
+class GreetingHandler: StateHandler() {
     override val state = UserBotState.GREETING
-    override fun handleMessage(message: String, userAnswers: UserAnswers): Pair<String, UserBotState> {
-        return "Hello, print \'go\' to start" to UserBotState.START
-    }
 }

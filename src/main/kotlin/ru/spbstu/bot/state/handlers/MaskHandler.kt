@@ -4,23 +4,23 @@ import org.springframework.stereotype.Component
 import ru.spbstu.bot.state.StateHandler
 import ru.spbstu.user.UserAnswers
 import ru.spbstu.user.UserBotState
-import ru.spbstu.user.UserBotState.*
+import ru.spbstu.user.UserBotState.MASK
 import ru.spbstu.utils.isInt
 
 @Component
-class WasIllHandler: StateHandler() {
-    override val state = WAS_ILL
+class MaskHandler: StateHandler() {
+    override val state = MASK
 
     override fun validateAndSaveMessage(
         message: String,
         userAnswers: UserAnswers
     ): Boolean {
-        val low = 0
-        val high = 10
+        val low = 1
+        val high = 5
         if(
             !message.isInt() ||
             message.toInt() < low
             || message.toInt() > high) return false
-        return true.also { userAnswers.wasIll = message.toInt() }
+        return true.also { userAnswers.mask = message.toInt() }
     }
 }
