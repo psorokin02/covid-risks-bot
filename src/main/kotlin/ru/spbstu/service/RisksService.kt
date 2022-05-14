@@ -64,7 +64,4 @@ class RisksService(
         return result
     }
 
-//    fun resolveRisk(value: Double): String{
-//        TODO()
-//    }
 }
