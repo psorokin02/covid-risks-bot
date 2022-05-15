@@ -16,7 +16,7 @@ class RisksService(
     @Value("\${python-script-path}")
     val scriptPath: String
 ) {
-    fun calculateRisks(answers: UserAnswers): Double{
+    fun calculateRisks(answers: UserAnswers): Int{
         println("trying to start script")
         val cmd: Array<String> = arrayOf(
             "python3",
@@ -59,9 +59,9 @@ class RisksService(
         }catch (e: Exception) {
             println("got exception")
         }
-        result = (result*100).toInt().toDouble()/100
+
         println("returning script result")
-        return result
+        return (result*100).toInt()
     }
 
 }

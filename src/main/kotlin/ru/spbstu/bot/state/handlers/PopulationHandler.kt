@@ -26,8 +26,9 @@ class PopulationHandler(
         println(userAnswers.toString())
 
         return "Отлично, анкта заполнена\n\n" +
-            "Мы оцениваем ваш риск заразиться как число в диапазоне от 0 до 1\n" +
-            "Ваш риск: $risk\n\n" +
+//            "Мы оцениваем ваш риск заразиться как число в диапазоне от 0 до 1\n" +
+//            "Ваш риск: $risk\n\n" +
+                "Вы в зоне риска на $risk%\n\n" +
             "Напишите \"go\", чтобы пройти опрос еще раз" to state.next
     }
     override fun validateAndSaveMessage(

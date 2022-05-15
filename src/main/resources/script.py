@@ -9,8 +9,8 @@ import pickle
 model =  pickle.load(open('src/main/resources/model.sav', 'rb'))
 data = pd.DataFrame.from_dict({'age':[int(sys.argv[1])],
                                'gender':[int(sys.argv[2])],
-                               'vaccination':[int(sys.argv[3])],
+                               'vaccination':[int(sys.argv[3]) % 6 + 1],
                                'crowd':[int(sys.argv[4])],
                                'mask':[int(sys.argv[5])],
                                'population':[int(sys.argv[6])]})
-print(model.predict_proba(data)[0][0])
+print(model.predict_proba(data)[0][1])
